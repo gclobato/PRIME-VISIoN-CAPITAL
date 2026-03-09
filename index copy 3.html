@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Vision Capital | Holding Group</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #F2F2F2;
+            --concrete: #2D2D2D;
+            --deep-black: #121212;
+            --action-orange: #FF5F1F;
+            --border-soft: rgba(0,0,0,0.08);
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--concrete);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        /* HEADER ESTRUTURAL */
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 8%;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--deep-black);
+            text-decoration: none;
+        }
+
+        .brand span { color: var(--action-orange); }
+
+        /* HERO - ARQUITETURA DE NEGÓCIOS */
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 85vh;
+            align-items: stretch;
+        }
+
+        .hero-text {
+            padding: 100px 15%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .hero-image {
+            background-image: url('https://images.unsplash.com/photo-1577412647305-991150c7d163?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        .hero-text h1 {
+            font-size: clamp(3.5rem, 6vw, 5rem);
+            line-height: 0.9;
+            margin: 20px 0;
+            color: var(--deep-black);
+        }
+
+        /* SEÇÕES GEOMÉTRICAS */
+        .section-wrapper { padding: 120px 10%; }
+
+        .holding-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--border-soft);
+            border: 1px solid var(--border-soft);
+        }
+
+        .holding-card {
+            background: var(--paper);
+            padding: 60px 40px;
+            transition: 0.4s ease;
+        }
+
+        .holding-card:hover {
+            background: var(--deep-black);
+            color: #fff;
+        }
+
+        .holding-card:hover h3 { color: var(--action-orange); }
+
+        .card-num {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            display: block;
+            color: var(--action-orange);
+        }
+
+        /* TEXTO DE DESTAQUE */
+        .feature-text {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .btn-solid {
+            background: var(--deep-black);
+            color: #fff;
+            padding: 20px 40px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 11px;
+            transition: 0.3s;
+        }
+
+        .btn-solid:hover {
+            background: var(--action-orange);
+            transform: scale(1.05);
+        }
+
+        /* FOOTER BRUTALISTA */
+        .footer-brutal {
+            background: var(--deep-black);
+            color: #fff;
+            padding: 100px 10% 40px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 80px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="nav-header">
+        <a href="#" class="brand">PRIME VISION <span>CAPITAL</span></a>
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px;">EST. 2021 | HOLDING GROUP</div>
+    </header>
+
+    <main>
+        <section class="hero-split">
+            <div class="hero-text">
+                <span style="font-weight: 900; font-size: 10px; letter-spacing: 5px; color: var(--action-orange);">CAPITAL MANAGEMENT</span>
+                <h1>ESTRUTURA <br> DE VALOR.</h1>
+                <p style="margin: 30px 0; font-size: 1.1rem; opacity: 0.7;">Projetando o crescimento patrimonial através de estratégias sólidas em mercados globais.</p>
+                <div><a href="#" class="btn-solid">Nossas Operações</a></div>
+            </div>
+            <div class="hero-image"></div>
+        </section>
+
+        <section class="section-wrapper">
+            <div style="margin-bottom: 80px; text-align: center;">
+                <h2 style="font-size: 3rem;">Nossas Verticais.</h2>
+                <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 12px; font-weight: 700;">A força de um ecossistema integrado</p>
+            </div>
+
+            <div class="holding-grid">
+                <div class="holding-card">
+                    <span class="card-num">01 / INVESTIMENTOS</span>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Prime Vision Invest</h3>
+                    <p style="font-size: 14px; opacity: 0.8;">Commodities e Criptoativos geridos por inteligência algorítmica de alta frequência.</p>
+                </div>
+                <div class="holding-card">
+                    <span class="card-num">02 / COMPLIANCE</span>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Prime Vision Regularize</h3>
+                    <p style="font-size: 14px; opacity: 0.8;">Regularização estratégica de CPF/CNPJ e consultoria financeira de alto padrão.</p>
+                </div>
+                <div class="holding-card">
+                    <span class="card-num">03 / CRÉDITO</span>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Prime Vision Promotora</h3>
+                    <p style="font-size: 14px; opacity: 0.8;">Acesso facilitado a crédito para saúde e procedimentos de alto padrão estético.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-wrapper" style="background: #fff;">
+            <div style="max-width: 900px;">
+                <h2 class="feature-text">
+                    Dinheiro parado não rende. <br>
+                    <span style="color: var(--action-orange);">Opere com inteligência.</span>
+                </h2>
+                <p style="font-size: 1.2rem; font-style: italic; border-left: 5px solid var(--action-orange); padding-left: 30px;">
+                    A Prime Vision Invest opera com estratégias personalizadas e sistemas algorítmicos de alta performance. Seu capital gerido com precisão em mercados globais.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-brutal">
+        <div class="footer-top">
+            <div>
+                <h2 style="font-size: 2rem; color: #fff; margin-bottom: 10px;">PRIME VISION GROUP.</h2>
+                <p style="opacity: 0.5; text-transform: uppercase; letter-spacing: 2px; font-size: 10px;">Grandes Negócios. Grandes Oportunidades.</p>
+            </div>
+            <div style="text-align: right;">
+                <p style="font-size: 12px; margin-bottom: 20px;">Siga nossa evolução:</p>
+                <div style="display: flex; gap: 20px; justify-content: flex-end;">
+                    <i class="fa-brands fa-instagram fa-lg"></i>
+                    <i class="fa-brands fa-linkedin fa-lg"></i>
+                    <i class="fa-brands fa-whatsapp fa-lg"></i>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; opacity: 0.3;">
+            <p>LOBATO COPYRIGHT &copy; 2026</p>
+            <p style="letter-spacing: 5px; text-transform: uppercase;">Acompanhe o Futuro</p>
+        </div>
+    </footer>
+
+</body>
+</html>

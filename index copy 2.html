@@ -1,202 +1,279 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Vision Capital | Holding</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Prime Vision Capital | Global Holding</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
-        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; }
-        .text-prime-red { color: #FF0000; }
-        .bg-prime-red { background-color: #FF0000; }
-        .border-prime-red { border-color: #FF0000; }
-        .card-dark { background-color: #080808; border: 1px solid #1A1A1A; }
-        .status-text { font-size: 10px; letter-spacing: 2px; color: #444; }
-        .italic-bold { font-style: italic; font-weight: 900; }
+        :root {
+            --bg-deep: #050A10;
+            --bg-accent: #0D1520;
+            --accent-cyan: #00F2FF;
+            --accent-silver: #E2E8F0;
+            --glass-border: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--accent-silver);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* HEADER GLASSMORPHISM */
+        .glass-header {
+            background: rgba(5, 10, 16, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 8%;
+            position: fixed;
+            width: 84%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--accent-cyan); }
+
+        /* HERO - TECH FOCUS */
+        .hero-tech {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at 70% 50%, rgba(0, 242, 255, 0.05), transparent);
+            position: relative;
+        }
+
+        .hero-tech::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-tech h1 {
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -4px;
+            margin: 0;
+            background: linear-gradient(to bottom, #fff 50%, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cyan-tag {
+            color: var(--accent-cyan);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* GRID CARDS - NEON BORDERS */
+        .section-padding { padding: 120px 10%; }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tech-card {
+            background: var(--bg-accent);
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+        }
+
+        .tech-card i {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .tech-card h3 {
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* DATA SECTION */
+        .data-display {
+            background: #000;
+            border-radius: 4px;
+            padding: 30px;
+            font-family: 'Courier New', monospace;
+            border-left: 3px solid var(--accent-cyan);
+        }
+
+        .ticker-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #111;
+            font-size: 12px;
+        }
+
+        .status-pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--accent-cyan);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .btn-cyber {
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-cyber:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-deep);
+        }
+
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#1a1a1a 1px, transparent 1px); background-size: 30px 30px;"></div>
-        <div class="z-10 border-l-8 border-prime-red pl-8 py-4 bg-black/50 backdrop-blur-sm">
-            <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter">PRIME VISION <br> CAPITAL</h1>
-            <p class="text-zinc-400 text-xl md:text-2xl mt-4 tracking-[0.2em] uppercase font-light">Uma nova era de negócios está chegando</p>
+    <header class="glass-header">
+        <a href="#" class="logo">PRIME VISION <span>CAPITAL</span></a>
+        <div style="display: flex; gap: 30px;">
+            <a href="#" style="color: #fff; text-decoration: none; font-size: 10px; font-weight: 700; text-transform: uppercase;">A Holding</a>
+            <a href="#" style="color: #fff; text-decoration: none; font-size: 10px; font-weight: 700; text-transform: uppercase;">Perspectivas</a>
         </div>
+        <a href="#" class="btn-cyber" style="padding: 8px 20px;">Terminal</a>
     </header>
 
-    <section class="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-900">
-        <div class="mb-16">
-            <h2 class="text-5xl font-black uppercase italic-bold">ESTAMOS EVOLUINDO</h2>
-            <p class="text-prime-red uppercase tracking-widest text-sm mt-2">Prime Vision Capital agora é uma Holding</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="card-dark p-10 rounded-lg relative overflow-hidden group hover:border-prime-red transition-all">
-                <span class="absolute bottom-4 right-6 text-6xl font-black text-zinc-900 group-hover:text-prime-red/10">01</span>
-                <i class="fa-solid fa-file-invoice-dollar text-prime-red text-3xl mb-6 block"></i>
-                <h3 class="text-xl font-bold uppercase mb-4">Prime Vision Regularize</h3>
-                <p class="text-zinc-500 text-sm italic">Serviços Financeiros e Regularização. Soluções para CPF e CNPJ com consultoria de alto nível.</p>
-            </div>
-            <div class="card-dark p-10 rounded-lg relative border-t-4 border-prime-red group">
-                <span class="absolute bottom-4 right-6 text-6xl font-black text-zinc-900">02</span>
-                <i class="fa-solid fa-heart-pulse text-prime-red text-3xl mb-6 block"></i>
-                <h3 class="text-xl font-bold uppercase mb-4">Prime Vision Promotora de Crédito</h3>
-                <p class="text-zinc-500 text-sm italic">Crédito Especializado em Saúde. Acesso facilitado a procedimentos estéticos e médicos.</p>
-            </div>
-            <div class="card-dark p-10 rounded-lg relative overflow-hidden group hover:border-prime-red transition-all">
-                <span class="absolute bottom-4 right-6 text-6xl font-black text-zinc-900 group-hover:text-prime-red/10">03</span>
-                <i class="fa-solid fa-chart-line text-prime-red text-3xl mb-6 block"></i>
-                <h3 class="text-xl font-bold uppercase mb-4">Prime Vision Invest LTDA</h3>
-                <p class="text-zinc-500 text-sm italic">Investimentos em Commodities e Criptoativos. Gestão estratégica e operações automatizadas.</p>
-            </div>
-        </div>
-        <p class="mt-16 text-center text-zinc-600 font-bold uppercase tracking-[0.5em] text-xs italic">Grandes Negócios. Grandes Oportunidades.</p>
-    </section>
-
-    <section class="py-24 bg-zinc-950 border-y border-zinc-900 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-            <div class="md:w-1/2">
-                <h2 class="text-4xl font-black uppercase tracking-tighter mb-4 italic">PRIME VISION INVEST LTDA</h2>
-                <p class="text-prime-red text-xs font-bold uppercase tracking-[0.3em] mb-12">Commodities & Criptoativos</p>
-                
-                <h3 class="text-3xl font-bold uppercase italic leading-tight mb-8">
-                    Dinheiro parado não rende.<br>
-                    <span class="text-prime-red">Opere com inteligência.</span>
-                </h3>
-                
-                <p class="text-zinc-400 italic mb-10 border-l-2 border-zinc-800 pl-6 leading-relaxed">
-                    A Prime Vision Invest opera com estratégias personalizadas e sistemas algorítmicos de alta performance. Seu capital gerido com precisão em mercados globais.
+    <main>
+        <section class="hero-tech">
+            <div class="hero-content">
+                <span class="cyan-tag">System Version 2026.03</span>
+                <h1>ALGORITHMIC<br>PRECISION.</h1>
+                <p style="color: #667; margin-top: 30px; font-size: 1.1rem; line-height: 1.6;">
+                    A <strong>Prime Vision Capital</strong> opera na intersecção entre o capital financeiro <br>e a inteligência computacional de alta performance.
                 </p>
-
-                <div class="p-6 border border-zinc-800 bg-black rounded shadow-xl">
-                    <p class="text-prime-red font-bold text-xs uppercase tracking-widest mb-2 italic">🤖 Sistemas Algorítmicos</p>
-                    <p class="text-xs text-zinc-500 uppercase italic">Operações automatizadas 24/7 para maximizar resultados e minimizar riscos humanos.</p>
+                <div style="margin-top: 40px;">
+                    <a href="#" class="btn-cyber">Acessar Estratégias</a>
                 </div>
             </div>
+        </section>
 
-            <div class="md:w-1/3 w-full space-y-4">
-                <div class="status-text text-right mb-4">MKT STATUS: <span class="text-green-500">OPEN</span> • SYS: <span class="text-green-500">ONLINE</span></div>
-                <div class="card-dark p-6 rounded shadow-2xl">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-[10px] text-zinc-600 font-bold uppercase">Commodities</span>
-                        <i class="fa-solid fa-chart-simple text-prime-red"></i>
+        <section class="section-padding" style="background: var(--bg-accent);">
+            <div style="margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem; font-weight: 900; text-transform: uppercase;">Holding Divisions</h2>
+                <div style="width: 50px; hieght: 2px; background: var(--accent-cyan); height: 2px; margin-top: 10px;"></div>
+            </div>
+
+            <div class="service-grid">
+                <div class="tech-card">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>Invest LTDA</h3>
+                    <p style="font-size: 13px; color: #667; line-height: 1.6;">Sistemas algorítmicos aplicados a Commodities e Criptoativos. Operações automatizadas 24/7.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Regularize</h3>
+                    <p style="font-size: 13px; color: #667; line-height: 1.6;">Engenharia financeira para regularização de ativos e CPF/CNPJ. Consultoria de alta conformidade.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fa-solid fa-dna"></i>
+                    <h3>Promotora</h3>
+                    <p style="font-size: 13px; color: #667; line-height: 1.6;">Crédito especializado em saúde. Estruturas de financiamento para procedimentos de alto padrão.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+                <div>
+                    <span class="cyan-tag">Market Insights</span>
+                    <h2 style="font-size: 3rem; font-weight: 900; line-height: 1;">DINHEIRO PARADO <br> NÃO RENDE.</h2>
+                    <p style="margin: 30px 0; color: #667; line-height: 1.8;">
+                        Nossos sistemas analisam terabytes de dados globais para encontrar assimetrias nos mercados de metais, energia e blockchain. Sua gestão com o rigor da tecnologia.
+                    </p>
+                    <a href="#" class="btn-cyber">Ver Relatório 2026</a>
+                </div>
+                
+                <div class="data-display">
+                    <div style="margin-bottom: 20px; font-weight: 900; color: var(--accent-cyan); font-size: 10px;">
+                        <span class="status-pulse"></span> LIVE_MARKET_FEED
                     </div>
-                    <div class="space-y-4 text-[11px] uppercase tracking-widest">
-                        <div class="flex justify-between border-b border-zinc-900 pb-2"><span>Ouro & Metais</span> <span class="text-prime-red font-bold italic">SPOT/FUTURO</span></div>
-                        <div class="flex justify-between border-b border-zinc-900 pb-2"><span>Petróleo (WTI/Brent)</span> <span class="text-prime-red font-bold italic">ENERGIA</span></div>
-                        <div class="flex justify-between"><span>Grãos & Minério</span> <span class="text-prime-red font-bold italic">AGRO/IND</span></div>
-                    </div>
-                </div>
-                <div class="card-dark p-6 rounded shadow-2xl">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-[10px] text-zinc-600 font-bold uppercase">Digital Assets</span>
-                        <i class="fa-solid fa-network-wired text-prime-red"></i>
-                    </div>
-                    <div class="space-y-4 text-[11px] uppercase tracking-widest">
-                        <div class="flex justify-between border-b border-zinc-900 pb-2"><span>Criptomoedas</span> <span class="text-prime-red font-bold italic">BLOCKCHAIN</span></div>
-                        <div class="flex justify-between"><span>Gestão de Capital</span> <span class="text-prime-red font-bold italic">ESTRATÉGICO</span></div>
-                    </div>
+                    <div class="ticker-line"><span>GOLD_SPOT_FUT</span> <span style="color: var(--accent-cyan);">+1.24%</span></div>
+                    <div class="ticker-line"><span>OIL_WTI_BRENT</span> <span style="color: var(--accent-cyan);">ACTIVE</span></div>
+                    <div class="ticker-line"><span>BTC_STG_STRAT</span> <span style="color: var(--accent-cyan);">RUNNING</span></div>
+                    <div class="ticker-line"><span>ALGO_HEALTH_SYS</span> <span style="color: var(--accent-cyan);">99.9%</span></div>
+                    <div style="margin-top: 20px; font-size: 9px; opacity: 0.3;">TIME_STAMP: 2026-03-09_T10:58:42</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="py-24 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <div>
-            <h2 class="text-4xl font-black uppercase italic tracking-tighter italic mb-4 italic">PRIME VISION REGULARIZE</h2>
-            <p class="text-prime-red text-xs font-bold uppercase tracking-[0.3em] mb-12 italic">Serviços Financeiros e Regularização</p>
-            
-            <p class="text-xl font-bold italic mb-6">CPF ou CNPJ irregular? Chega de bloqueios, restrições e dor de cabeça.</p>
-            <p class="text-zinc-500 mb-8 italic">A Prime Vision Regularize oferece a solução definitiva para regularizar sua vida financeira com segurança e agilidade.</p>
-            
-            <div class="bg-zinc-900 border-l-4 border-prime-red px-6 py-4 uppercase font-bold tracking-widest text-sm italic">
-                Consultoria de Alto Nível
+    <footer style="padding: 80px 10%; background: #000; border-top: 1px solid var(--glass-border);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <a href="#" class="logo">PRIME VISION <span>CAPITAL</span></a>
+                <p style="font-size: 10px; color: #333; margin-top: 10px; letter-spacing: 2px;">GLOBAL ASSET MANAGEMENT</p>
             </div>
-            <div class="mt-4 status-text uppercase">Status: <span class="text-zinc-300">Regularizado</span></div>
-        </div>
-        <div class="card-dark p-10 rounded-lg space-y-6">
-            <div class="flex items-center gap-4"><i class="fa-solid fa-circle-check text-prime-red"></i> <span class="uppercase tracking-widest text-xs font-bold italic">Regularização de CPF e CNPJ</span></div>
-            <div class="flex items-center gap-4"><i class="fa-solid fa-circle-check text-prime-red"></i> <span class="uppercase tracking-widest text-xs font-bold italic">Estratégia Financeira Personalizada</span></div>
-            <div class="flex items-center gap-4"><i class="fa-solid fa-circle-check text-prime-red"></i> <span class="uppercase tracking-widest text-xs font-bold italic">Atendimento Exclusivo</span></div>
-            <div class="flex items-center gap-4"><i class="fa-solid fa-circle-check text-prime-red"></i> <span class="uppercase tracking-widest text-xs font-bold italic">Fim das Restrições Bancárias</span></div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-zinc-950 border-y border-zinc-900 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="border-l-4 border-prime-red pl-6 mb-16">
-                <h2 class="text-4xl font-black uppercase italic leading-tight">PRIME VISION PROMOTORA DE CRÉDITO</h2>
-                <p class="text-zinc-500 uppercase tracking-widest text-xs mt-2 italic">Crédito especializado em saúde</p>
-            </div>
-            
-            <p class="text-2xl font-bold mb-16 italic uppercase leading-snug max-w-3xl">
-                Já pensou em realizar aquele procedimento que você sempre quis? <span class="text-prime-red">Agora o acesso à saúde de qualidade é possível.</span>
-            </p>
-
-            <div class="grid md:grid-cols-3 gap-8 italic">
-                <div class="card-dark p-8 rounded border-b-2 border-transparent hover:border-prime-red transition shadow-lg">
-                    <i class="fa-solid fa-spa text-prime-red text-2xl mb-6 block"></i>
-                    <h4 class="font-bold uppercase mb-6 tracking-widest">Estética Premium</h4>
-                    <ul class="text-[11px] space-y-3 uppercase text-zinc-500">
-                        <li>• Lipoaspiração e Silicone</li>
-                        <li>• Harmonização Facial</li>
-                        <li>• Procedimentos Estéticos</li>
-                        <li>• Emagrecimento</li>
-                    </ul>
-                </div>
-                <div class="card-dark p-8 rounded border-b-2 border-transparent hover:border-prime-red transition shadow-lg">
-                    <i class="fa-solid fa-user-doctor text-prime-red text-2xl mb-6 block"></i>
-                    <h4 class="font-bold uppercase mb-6 tracking-widest">Saúde de Alto Padrão</h4>
-                    <ul class="text-[11px] space-y-3 uppercase text-zinc-500">
-                        <li>• Tratamentos de Ponta</li>
-                        <li>• Clínicas Renomadas</li>
-                        <li>• Acesso a Especialistas</li>
-                        <li>• Check-ups Completos</li>
-                    </ul>
-                </div>
-                <div class="card-dark p-8 rounded border-b-2 border-transparent hover:border-prime-red transition shadow-lg">
-                    <i class="fa-solid fa-hand-holding-dollar text-prime-red text-2xl mb-6 block"></i>
-                    <h4 class="font-bold uppercase mb-6 tracking-widest">Acesso Facilitado</h4>
-                    <ul class="text-[11px] space-y-3 uppercase text-zinc-500 font-bold">
-                        <li class="text-zinc-300">• Crédito Especializado</li>
-                        <li class="text-zinc-300">• Parcelamento Flexível</li>
-                        <li class="text-zinc-300">• Sem Burocracia</li>
-                        <li class="text-zinc-300">• Aprovação Ágil</li>
-                    </ul>
-                </div>
+            <div style="display: flex; gap: 40px; font-size: 14px; opacity: 0.5;">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+                <i class="fa-brands fa-linkedin-in"></i>
             </div>
         </div>
-    </section>
-
-    <footer class="py-24 px-6 text-center">
-        <h2 class="text-5xl font-black uppercase italic mb-4 italic leading-tight">ACOMPANHE. <br> <span class="text-prime-red">FIQUE POR DENTRO.</span></h2>
-        <p class="text-zinc-500 uppercase tracking-widest text-xs mb-16 italic">Em breve nossas plataformas estarão no ar via Web, Play Store e Apple Store.</p>
-        
-        <div class="flex justify-center gap-10 mb-20 grayscale hover:grayscale-0 transition opacity-60 hover:opacity-100">
-            <a href="#" class="flex flex-col items-center gap-3">
-                <div class="w-14 h-14 rounded-full border border-prime-red flex items-center justify-center text-xl text-prime-red"><i class="fa-brands fa-instagram"></i></div>
-                <span class="text-[10px] font-bold uppercase tracking-widest">Instagram</span>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-3">
-                <div class="w-14 h-14 rounded-full border border-prime-red flex items-center justify-center text-xl text-prime-red"><i class="fa-brands fa-whatsapp"></i></div>
-                <span class="text-[10px] font-bold uppercase tracking-widest">WhatsApp</span>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-3">
-                <div class="w-14 h-14 rounded-full border border-zinc-800 flex items-center justify-center text-xl"><i class="fa-brands fa-google-play"></i></div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-600">Google Play</span>
-            </a>
-            <a href="#" class="flex flex-col items-center gap-3">
-                <div class="w-14 h-14 rounded-full border border-zinc-800 flex items-center justify-center text-xl"><i class="fa-brands fa-apple"></i></div>
-                <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-600">App Store</span>
-            </a>
-        </div>
-
-        <div class="pt-12 border-t border-zinc-900">
-            <p class="text-sm font-black uppercase tracking-[0.4em] mb-2 italic">PRIME VISION <span class="text-prime-red">CAPITAL</span></p>
-            <p class="text-zinc-700 text-[10px] font-bold uppercase tracking-widest mb-6">Grandes Negócios. Grandes Oportunidades.</p>
-            <p class="text-zinc-900 text-[9px] font-black uppercase tracking-[1em]">lobato copyright</p>
+        <div style="margin-top: 60px; text-align: center; font-size: 9px; color: #111; font-weight: 900; letter-spacing: 10px; text-transform: uppercase;">
+            lobato copyright &copy; 2026
         </div>
     </footer>
 
